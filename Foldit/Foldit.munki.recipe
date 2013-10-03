@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release version of Comic Life 2 and imports into Munki.</string>
+	<string>Downloads the current release version of Foldit and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.groob.munki.ComicLife2</string>
+	<string>com.github.groob.munki.Foldit</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Comic Life 2</string>
+		<string>Foldit</string>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/comiclife</string>
+		<string>apps/foldit</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -19,9 +19,9 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>The app is designed to create comic pages using digital photos. Users can drag and drop photos from their libraries, finders, directly from web pages or other programs.</string>
+			<string>Protein Folding simulation.</string>
 			<key>display_name</key>
-			<string>Comic Life 2</string>
+			<string>Foldit</string>
 			<key>minimum_os_version</key>
 			<string>10.7</string>
 			<key>name</key>
@@ -30,12 +30,27 @@
 			<true/>
 			<key>unattended_uninstall</key>
 			<true/>
+      <key>items_to_copy</key>
+      <array>
+        <dict>
+          <key>destination_path</key>
+          <string>/Applications</string>
+          <key>group</key>
+          <string>wheel</string>
+          <key>mode</key>
+          <string>a+w</string>
+          <key>source_item</key>
+          <string>Foldit.app</string>
+          <key>user</key>
+          <string>root</string>
+        </dict>
+      </array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.groob.download.ComicLife2</string>
+	<string>com.github.groob.download.Foldit</string>
 	<key>Process</key>
 	<array>
 		<dict>
