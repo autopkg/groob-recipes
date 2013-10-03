@@ -19,34 +19,19 @@
                 <string>testing</string>
             </array>
             <key>description</key>
-            <string>Google SketchUp Make</string>
+            <string>SketchUp Make</string>
             <key>display_name</key>
             <string>SketchUp Make 2013</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>installer_type</key>
-            <string>copy_from_dmg</string>
-            <key>installs</key>
-            <array>
-              <dict>
-                <key>path</key>
-                <string>/Applications/SketchUp 2013</string>
-                <key>type</key>
-                <string>file</string>
-              </dict>
-            </array>
-            <key>items_to_copy</key>
-            <array>
-              <dict>
-                <key>destination_path</key>
-                <string>/Applications</string>
-                <key>source_item</key>
-                <string>SketchUp 2013</string>
-              </dict>
-            </array>
             <key>unattended_install</key>
             <true/>
         </dict>
+        <key>additional_makepkginfo_options</key>
+        <array>
+          <string>--item=SketchUp 2013</string>
+          <string>--destinationpath=/Applications</string>
+        </array>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
