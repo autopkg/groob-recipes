@@ -21,11 +21,9 @@
             <key>description</key>
             <string>Google Sketchup.</string>
             <key>display_name</key>
-            <string>edvrclient</string>
+            <string>SketchUp Make 2013</string>
             <key>name</key>
             <string>%NAME%</string>
-            <key>unattended_install</key>
-            <true/>
             <key>installer_type</key>
             <string>copy_from_dmg</string>
             <key>installs</key>
@@ -46,6 +44,8 @@
                 <string>SketchUp 2013</string>
               </dict>
             </array>
+            <key>unattended_install</key>
+            <true/>
         </dict>
     </dict>
     <key>MinimumVersion</key>
