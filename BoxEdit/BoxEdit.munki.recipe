@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads and imports the latest version of Box Edit into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.groob.munki.boxedit</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Box Edit</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/box/boxedit</string>
+        <key>DOWNLOAD_URL</key>
+        <string>https://app.box.com/static/BoxEdit/BoxEditInstaller.dmg</string>
+        <key>USER_AGENT</key>
+        <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.28.10 (KHTML, like Gecko) Version/6.0.3 Safari/536.28.10</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Box Edit</string>
+			<key>display_name</key>
+			<string>Box Edit</string>
+			<key>minimum_os_version</key>
+			<string>10.7</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+            <key>Arguments</key>
+            <dict>
+                <key>url</key>
+                <string>%DOWNLOAD_URL%</string>
+                <key>request_headers</key>
+                <dict>
+                        <key>user-agent</key>
+                        <string>%USER_AGENT%</string>
+                </dict>
+                <key>filename</key>
+                <string>%NAME%.dmg</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%pathname%/Install Box Edit.app/Contents/Resources/Box Edit.plugin/Contents/Info.plist</string>
+                <key>plist_version_key</key>
+                <string>CFBundleVersion</string>
+            </dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>installs</key>
+                    <array>
+                     <dict>
+                       <key>CFBundleIdentifier</key>
+                       <string>com.Box.Box-Edit</string>
+                       <key>CFBundleName</key>
+                       <string>Box Edit</string>
+                       <key>CFBundleShortVersionString</key>
+                       <string>%version%</string>
+                       <key>minosversion</key>
+                       <string>10.6</string>
+                       <key>path</key>
+                       <string>/Applications/Box Edit.app</string>
+                       <key>type</key>
+                       <string>application</string>
+                       <key>version_comparison_key</key>
+                       <string>CFBundleShortVersionString</string>
+                     </dict>
+                     <dict>
+                       <key>CFBundleShortVersionString</key>
+                       <string>%version%</string>
+                       <key>path</key>
+                       <string>/Applications/Box Edit.plugin</string>
+                       <key>type</key>
+                       <string>bundle</string>
+                       <key>version_comparison_key</key>
+                       <string>CFBundleShortVersionString</string>
+                     </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>items_to_copy</key>
+                    <array>
+                  		<dict>
+                  			<key>destination_path</key>
+                  			<string>/Applications</string>
+                  			<key>source_item</key>
+                  			<string>Install Box Edit.app/Contents/Resources/Box Edit.app</string>
+                  		</dict>
+                  		<dict>
+                  			<key>destination_path</key>
+                  			<string>/Library/Internet Plug-Ins</string>
+                  			<key>source_item</key>
+                  			<string>Install Box Edit.app/Contents/Resources/Box Edit.plugin</string>
+                  		</dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+     <dict>
+         <key>Arguments</key>
+         <dict>
+             <key>pkg_path</key>
+             <string>%pathname%</string>
+             <key>repo_subdirectory</key>
+             <string>%MUNKI_REPO_SUBDIR%</string>
+             <key>additional_makepkginfo_options</key>
+             <array>
+               <string>--item=Install Box Edit.app/Contents/Resources/Box Edit.app</string>
+               <string>--destinationpath=/Applications</string>
+             </array>
+         </dict>
+         <key>Processor</key>
+         <string>MunkiImporter</string>
+     </dict>
+    </array>
+</dict>
+</plist>
+
