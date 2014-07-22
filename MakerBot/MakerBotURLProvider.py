@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 #
 import re
+import urllib
 import urllib2
+import urlparse
 
 from autopkglib import Processor, ProcessorError
 
@@ -40,7 +42,9 @@ class MakerBotURLProvider(Processor):
 
         # Search for download link.
         m = re_dmg.search(html)
-        url = m.group("filename")
+        url_bits = urlparse.urlsplit(m.group("filename"))
+        encoded_path = urllib.quote(url_bits.path)
+        url = url_bits.scheme + "://" + url_bits.netloc + encoded_path
         if not m:
           raise ProcessorError(
               "error Couldn't find %s download URL in %s" 
