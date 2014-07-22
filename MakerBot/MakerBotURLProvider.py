@@ -46,7 +46,7 @@ class MakerBotURLProvider(Processor):
               "error Couldn't find %s download URL in %s" 
               % (base_url))
 
-          return url
+        return url
 
     def main(self):
       base_url = self.env.get("base_url", MAKE_BASE_URL)
