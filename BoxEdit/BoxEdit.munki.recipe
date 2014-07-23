@@ -102,7 +102,7 @@
                        <key>CFBundleShortVersionString</key>
                        <string>%version%</string>
                        <key>path</key>
-                       <string>/Applications/Box Edit.plugin</string>
+                       <string>/Library/Internet Plug-Ins/Box Edit.plugin</string>
                        <key>type</key>
                        <string>bundle</string>
                        <key>version_comparison_key</key>
