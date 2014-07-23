@@ -66,7 +66,7 @@
                 <key>input_plist_path</key>
                 <string>%pathname%/Install Box Edit.app/Contents/Resources/Box Edit.plugin/Contents/Info.plist</string>
                 <key>plist_version_key</key>
-                <string>CFBundleVersion</string>
+                <string>CFBundleShortVersionString</string>
             </dict>
             <key>Processor</key>
             <string>Versioner</string>
@@ -85,6 +85,8 @@
                        <string>com.Box.Box-Edit</string>
                        <key>CFBundleName</key>
                        <string>Box Edit</string>
+                       <key>CFBundleVersion</key>
+                       <string>%version%</string>
                        <key>CFBundleShortVersionString</key>
                        <string>%version%</string>
                        <key>minosversion</key>
@@ -94,7 +96,7 @@
                        <key>type</key>
                        <string>application</string>
                        <key>version_comparison_key</key>
-                       <string>CFBundleShortVersionString</string>
+                       <string>CFBundleVersion</string>
                      </dict>
                      <dict>
                        <key>CFBundleShortVersionString</key>
