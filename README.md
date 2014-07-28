@@ -8,6 +8,5 @@ Recipes for https://github.com/autopkg/autopkg
 * Kenavision
 * Kidspiration
 * Lexia Reading
-* ComicLife 2
 * iPevo Presenter
 * PYPEval
