@@ -82,7 +82,7 @@
                     <array>
                      <dict>
                        <key>CFBundleIdentifier</key>
-                       <string>com.Box.Box-Edit</string>
+                       <string>box.com.Box-Edit-Installer</string>
                        <key>CFBundleName</key>
                        <string>Box Edit</string>
                        <key>CFBundleVersion</key>
