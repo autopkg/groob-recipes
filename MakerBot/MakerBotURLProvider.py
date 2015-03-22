@@ -11,8 +11,11 @@ from autopkglib import Processor, ProcessorError
 __all__ = ["MakerBotURLProvider"]
 
 
+USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) "
+              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 "
+              "Safari/537.36")
 MAKE_BASE_URL = "https://www.makerbot.com/desktop"
-re_dmg = re.compile(r'urlMac": "(?P<filename>[^"]+\.dmg)')
+re_dmg = re.compile(r'urlMac":"(?P<filename>[^"]+\.dmg)')
 
 
 class MakerBotURLProvider(Processor):
@@ -34,7 +37,9 @@ class MakerBotURLProvider(Processor):
     def get_makerbot_dmg_url(self, base_url):
       # Read HTML index.
         try:
-          f = urllib2.urlopen(base_url)
+          req = urllib2.Request(base_url)
+          req.add_header('User-Agent', USER_AGENT)
+          f = urllib2.urlopen(req)
           html = f.read()
           f.close()
         except BaseException as e:
@@ -42,7 +47,9 @@ class MakerBotURLProvider(Processor):
 
         # Search for download link.
         m = re_dmg.search(html)
-        url_bits = urlparse.urlsplit(m.group("filename"))
+        makerbot_dmg = m.group("filename").split('/')[-1]
+        makerbot_url = "http://s3.amazonaws.com/downloads-makerbot-com/makerware/" + makerbot_dmg
+        url_bits = urlparse.urlsplit(makerbot_url)
         encoded_path = urllib.quote(url_bits.path)
         url = url_bits.scheme + "://" + url_bits.netloc + encoded_path
         if not m:
