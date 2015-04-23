@@ -33,10 +33,21 @@
     <key>ParentRecipe</key>
     <string>com.github.groob.download.makerbot</string>
     <key>Process</key>
-    <array>
+        <array>
         <dict>
             <key>Arguments</key>
             <dict>
+                <key>dmg_path</key>
+                <string>%pathname%</string>
+            </dict>
+            <key>Processor</key>
+            <string>MakerBotPkgFinder</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>munkiimport_pkgname</key>
+                <string>%makerbot_pkg%</string>
                 <key>pkg_path</key>
                 <string>%pathname%</string>
                 <key>repo_subdirectory</key>
