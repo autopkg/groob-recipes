@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Foldit</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://fold.it/portal/files/app/Foldit-osx_x86.zip</string>
+		<string>https://fold.it/portal/files/app/Foldit-osx_x86.zip</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
