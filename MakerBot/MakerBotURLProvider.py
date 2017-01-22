@@ -14,9 +14,8 @@ __all__ = ["MakerBotURLProvider"]
 USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) "
               "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 "
               "Safari/537.36")
-MAKE_BASE_URL = "https://www.makerbot.com/desktop"
-re_dmg = re.compile(r'urlMac":"(?P<filename>[^"]+\.dmg)')
-
+MAKE_BASE_URL = "https://www.makerbot.com/download-desktop/"
+re_dmg = re.compile(r'(https:\/\/downloads\.makerbot\.com\/makerware\/MakerBot Bundle ([A-z0-9._ ]+).dmg)')
 
 class MakerBotURLProvider(Processor):
     description = "Provides URL to the latest MakerBot Desktop Bundle."
@@ -47,7 +46,7 @@ class MakerBotURLProvider(Processor):
 
         # Search for download link.
         m = re_dmg.search(html)
-        makerbot_dmg = m.group("filename").split('/')[-1]
+        makerbot_dmg = m.group(0).split('/')[-1]
         makerbot_url = "http://s3.amazonaws.com/downloads-makerbot-com/makerware/" + makerbot_dmg
         url_bits = urlparse.urlsplit(makerbot_url)
         encoded_path = urllib.quote(url_bits.path)
