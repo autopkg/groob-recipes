@@ -16,14 +16,25 @@
     <key>Process</key>
     <array>
         <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>re_pattern</key>
+                <string>\/(MakerBot\+Bundle\+(BETA\+)?[\d\.]+\.dmg)</string>
+                <key>result_output_var_name</key>
+                <string>filename</string>
+                <key>url</key>
+                <string>https://support.makerbot.com/troubleshooting/makerbot-desktop-software/software-download/download_12190</string>
+            </dict>
             <key>Processor</key>
-            <string>MakerBotURLProvider</string>
+            <string>URLTextSearcher</string>
         </dict>
         <dict>
             <key>Arguments</key>
             <dict>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
+                <key>url</key>
+                <string>https://s3.amazonaws.com/downloads-makerbot-com/makerware/%filename%</string>
             </dict>
             <key>Processor</key>
             <string>URLDownloader</string>
@@ -35,4 +46,3 @@
     </array>
 </dict>
 </plist>
-
